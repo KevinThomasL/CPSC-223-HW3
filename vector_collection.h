@@ -14,6 +14,7 @@
 #include <algorithm>            
 #include "collection.h"
 
+using namespace std;
 
 template<typename K, typename V>
 class VectorCollection : public Collection<K,V>
@@ -52,18 +53,19 @@ template <typename K, typename V>
 // add a new key-value pair into the collection
 void VectorCollection<K,V>::add(const K& a_key, const V& a_val)
 {
- std::pair<K,V> p(a_key, a_val);
+ pair<K,V> p(a_key, a_val);
  kv_list.push_back(p);
 }
 
 template <typename K, typename V>
-void remove(const K& a_key)
+// remove a key-value pair from the collection
+void VectorCollection <K,V>::remove(const K& a_key)
 {
  int i = 0;
- for (pair<K,V> P : kv_list)
+ for (std::pair<K,V> P : kv_list)
  {
   if (P.first == a_key)
-   kv_list.erase(kv_ist.begin() + i);
+   kv_list.erase(kv_list.begin() + i);
   i++;
  } 
 }
@@ -89,7 +91,7 @@ void VectorCollection <K,V>::find(const K& k1, const K& k2, std::vector<V>& vals
  for (pair<K,V> P : kv_list)
  {
   if(P.first >= k1 && P.first <= k2)
-   keys.push_back(P.second);
+   vals.push_back(P.second);
  }
 }
 
