@@ -17,7 +17,8 @@ TEST(BasicListTest, CorrectSize) {
   ASSERT_EQ(2, c.size());
   c.add("c", 20.0);
   ASSERT_EQ(3, c.size());
-
+  ASSERT_NE(c.size(), -1);	//Make sure the size doesnt go above
+  ASSERT_NE(c.size(), 3);	//or below the bounds necessary
 }
 
 // Test 2
@@ -54,7 +55,12 @@ TEST(BasicListTest, SimpleRemoveElems) {
   ASSERT_EQ(false, c.find("c", v));  
   c.remove("d");
   ASSERT_EQ(0, c.size());
-  ASSERT_EQ(false, c.find("c", v));  
+  ASSERT_EQ(false, c.find("c", v));
+  c.insert("ef", 40.0);  //make sure remove works on 2 strings
+  ASSERT_EQ(2, c.size());
+  c.remove("de");
+  ASSERT_EQ(c.find("de", v), false);
+  ASSERT_EQ(c.size(), 0);
 }
 
 // Test 4

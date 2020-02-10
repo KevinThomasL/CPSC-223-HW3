@@ -4,7 +4,7 @@
 // Assign: 3
 // File:   vector_collection.h
 //
-// TODO: Description here
+// Work with key/vector pairs and implements various abilities
 //----------------------------------------------------------------------
 
 #ifndef VECTOR_COLLECTION_H
