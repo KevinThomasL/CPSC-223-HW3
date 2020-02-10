@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------
-// Author:
+// Author: Kevin Lunden
 // Course: CPSC 223, Spring 2020
 // Assign: 3
 // File:   vector_collection.h
@@ -48,5 +48,22 @@ private:
 
 // TODO: Implement member functions here ...
 
+template <typename K, typename V>
+// add a new key-value pair into the collection
+void VectorCollection<K,V>::add(const K& key, const V& val)
+{
+ std::pair<K,V> p(key, val);
+ kv_list.push_back(p);
+}
+
+void remove(const K& a_key)
+{
+ 
+}
+
+int size() const
+{
+ 
+}
 
 #endif
