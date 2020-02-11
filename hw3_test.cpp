@@ -52,15 +52,17 @@ TEST(BasicListTest, SimpleRemoveElems) {
   ASSERT_EQ(false, c.find("b", v));  
   c.remove("c");
   ASSERT_EQ(1, c.size());
+  ASSERT_EQ(true, c.find("d", v));  //make sure it is removing correct elems
+  ASSERT_EQ(30, v);  //
   ASSERT_EQ(false, c.find("c", v));  
   c.remove("d");
   ASSERT_EQ(0, c.size());
   ASSERT_EQ(false, c.find("c", v));
   c.add("ef", 40.0);  //make sure remove works on 2 strings
-  ASSERT_EQ(1, c.size());
-  c.remove("ef");
-  ASSERT_EQ(c.find("ef", v), false);
-  ASSERT_EQ(c.size(), 0);
+  ASSERT_EQ(1, c.size());  //
+  c.remove("ef");  //
+  ASSERT_EQ(c.find("ef", v), false);  // 
+  ASSERT_EQ(c.size(), 0);  //
 }
 
 // Test 4
@@ -87,19 +89,24 @@ TEST(BasicListTest, SimpleRange) {
 // Test 5
 TEST(BasicListTest, SimpleSort) {
   VectorCollection<string,int> c;
-  c.add("a", 10);
-  c.add("e", 50);
-  c.add("c", 30);
-  c.add("b", 20);
-  c.add("d", 40);
+  c.add("b", 5);
+  c.add("a", -10);  //test to work with negative numbers
+  c.add("f", 50);
+  c.add("d", 30);
+  c.add("c", 20);
+  c.add("e", 40);
+  c.add("h", 100);  //tests working with numbers larger than two digits
+  c.add("i", 500);
+  c.add("g", 75);
+  c.add("k", 50000);
+  c.add("j", 4000);
   vector<string> sorted_ks;
   c.sort(sorted_ks);
-  ASSERT_EQ(5, sorted_ks.size());
+  ASSERT_EQ(11, sorted_ks.size());
   // check if in sorted order
   for (int i = 0; i < int(sorted_ks.size()) -1; ++i)
     ASSERT_LE(sorted_ks[i], sorted_ks[i+1]);
 }
-
 
 // TODO: ... additional tests ...
 

@@ -71,6 +71,7 @@ void VectorCollection <K,V>::remove(const K& a_key)
 }
 
 template <typename K, typename V>
+// find and return the value associated with the key
 bool VectorCollection<K,V>::find(const K& search_key, V& the_val) const
 {
  for (pair<K,V> P : kv_list)
